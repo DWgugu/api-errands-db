@@ -8,8 +8,8 @@ export default class ErrandsRoutes {
         const controller = new ErrandsController();
 
         routes.post("/errands",validateToken , controller.store);
-        routes.get("/errands", controller.index);
-        routes.get("/errands/:id", controller.show);
+        routes.get("/errands",validateToken, controller.index);
+        routes.get("/errands/:id",validateToken, controller.show);
         routes.delete("/errands/:id",validateToken, controller.delete);
         routes.put("/errands/:id",validateToken, controller.update);
 

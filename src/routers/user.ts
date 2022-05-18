@@ -9,10 +9,10 @@ export default class UserRoutes {
         const controller = new UserController();
 
         routes.post("/login", controller.login);
-        routes.post("/user",userValidate, controller.store);
-        routes.get("/user", controller.index);
-        routes.get("/user/:id",[ validateToken ], controller.show);
-        routes.delete("/user/:id", controller.delete);
+        routes.post("/user",[ validateToken, userValidate ], controller.store);
+        routes.get("/user",validateToken, controller.index);
+        routes.get("/user/:id",validateToken, controller.show);
+        routes.delete("/user/:id",validateToken, controller.delete);
 
         return routes;
     }

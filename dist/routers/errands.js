@@ -11,8 +11,8 @@ class ErrandsRoutes {
         const routes = (0, express_1.Router)();
         const controller = new errands_1.default();
         routes.post("/errands", middlewares_1.validateToken, controller.store);
-        routes.get("/errands", controller.index);
-        routes.get("/errands/:id", controller.show);
+        routes.get("/errands", middlewares_1.validateToken, controller.index);
+        routes.get("/errands/:id", middlewares_1.validateToken, controller.show);
         routes.delete("/errands/:id", middlewares_1.validateToken, controller.delete);
         routes.put("/errands/:id", middlewares_1.validateToken, controller.update);
         return routes;

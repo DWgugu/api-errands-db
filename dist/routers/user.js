@@ -12,10 +12,10 @@ class UserRoutes {
         const routes = (0, express_1.Router)();
         const controller = new user_1.default();
         routes.post("/login", controller.login);
-        routes.post("/user", user_2.userValidate, controller.store);
-        routes.get("/user", controller.index);
-        routes.get("/user/:id", [middlewares_1.validateToken], controller.show);
-        routes.delete("/user/:id", controller.delete);
+        routes.post("/user", [middlewares_1.validateToken, user_2.userValidate], controller.store);
+        routes.get("/user", middlewares_1.validateToken, controller.index);
+        routes.get("/user/:id", middlewares_1.validateToken, controller.show);
+        routes.delete("/user/:id", middlewares_1.validateToken, controller.delete);
         return routes;
     }
 }
